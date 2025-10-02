@@ -16,6 +16,6 @@
 - **Supplier Management** – manage supplier info & map items  
 - **Billing System** – generate bills, auto-deduct stock, low-stock alerts  
 - **Reports & Analytics** – view sales, inventory stats, reorder alerts  
-- **PDF Bills** (future scope) – auto-generate receipts for customers  
+
 
 ---
