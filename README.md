@@ -2,6 +2,8 @@
 
 ♝ A full-stack application for **shopkeepers** to manage inventory, suppliers, and sales. It supports **real-time stock updates**, **billing system**, **low-stock alerts**, and **sales reports**.  
 
+---
+
 ♞ **Tech Stack** :  
 - **Backend:** Node.js, Express, Prisma, MySQL  
 - **Frontend:** React 
@@ -16,6 +18,5 @@
 - **Supplier Management** – manage supplier info & map items  
 - **Billing System** – generate bills, auto-deduct stock, low-stock alerts  
 - **Reports & Analytics** – view sales, inventory stats, reorder alerts  
-
 
 ---
