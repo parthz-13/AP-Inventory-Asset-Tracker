@@ -1,6 +1,6 @@
-import express from "express"
-import dotenv from "dotenv";
-import { PrismaClient } from "../generated/prisma/client.js";
+const express = require('express')
+const dotenv = require('dotenv')
+const { PrismaClient } = require("../generated/prisma/client.js");
 
 dotenv.config();
 const app = express();
