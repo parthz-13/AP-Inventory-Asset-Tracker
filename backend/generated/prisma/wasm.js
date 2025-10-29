@@ -92,35 +92,54 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.ShopkeeperScalarFieldEnum = {
+  shop_id: 'shop_id',
+  shop_name: 'shop_name',
+  name: 'name',
+  email: 'email',
+  password: 'password'
+};
+
 exports.Prisma.CustomerScalarFieldEnum = {
   cust_id: 'cust_id',
   cust_name: 'cust_name',
   email: 'email',
   phone: 'phone',
-  address: 'address'
+  address: 'address',
+  shop_id: 'shop_id'
 };
 
 exports.Prisma.ItemScalarFieldEnum = {
   item_id: 'item_id',
-  category: 'category',
   item_name: 'item_name',
+  category: 'category',
   stock: 'stock',
-  price: 'price'
+  price: 'price',
+  shop_id: 'shop_id'
 };
 
 exports.Prisma.TransactionScalarFieldEnum = {
-  Bill_No: 'Bill_No',
-  Bill_Date: 'Bill_Date',
-  Name: 'Name',
-  Item_Name: 'Item_Name',
-  Qty: 'Qty',
+  transaction_id: 'transaction_id',
+  bill_no: 'bill_no',
+  bill_date: 'bill_date',
+  qty: 'qty',
   item_price: 'item_price',
-  Total_Price: 'Total_Price'
+  total_price: 'total_price',
+  shop_id: 'shop_id',
+  cust_id: 'cust_id',
+  item_id: 'item_id'
 };
 
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.ShopkeeperOrderByRelevanceFieldEnum = {
+  shop_name: 'shop_name',
+  name: 'name',
+  email: 'email',
+  password: 'password'
 };
 
 exports.Prisma.NullsOrder = {
@@ -135,20 +154,20 @@ exports.Prisma.CustomerOrderByRelevanceFieldEnum = {
   address: 'address'
 };
 
-exports.Prisma.itemOrderByRelevanceFieldEnum = {
-  category: 'category',
-  item_name: 'item_name'
+exports.Prisma.ItemOrderByRelevanceFieldEnum = {
+  item_name: 'item_name',
+  category: 'category'
 };
 
 exports.Prisma.TransactionOrderByRelevanceFieldEnum = {
-  Name: 'Name',
-  Item_Name: 'Item_Name'
+  bill_no: 'bill_no'
 };
 
 
 exports.Prisma.ModelName = {
+  Shopkeeper: 'Shopkeeper',
   Customer: 'Customer',
-  item: 'item',
+  Item: 'Item',
   Transaction: 'Transaction'
 };
 /**
@@ -162,7 +181,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/parthsingh/Desktop/Inventory-Asset-Tracker/generated/prisma",
+      "value": "/Users/parthsingh/Desktop/Inventory-Asset-Tracker/backend/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -176,12 +195,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/parthsingh/Desktop/Inventory-Asset-Tracker/prisma/schema.prisma",
+    "sourceFilePath": "/Users/parthsingh/Desktop/Inventory-Asset-Tracker/backend/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../prisma",
   "clientVersion": "6.16.2",
@@ -190,7 +208,6 @@ const config = {
     "db"
   ],
   "activeProvider": "mysql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -199,13 +216,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Customer {\n  cust_id   Int     @id @default(autoincrement())\n  cust_name String? @unique\n\n  email   String  @unique\n  phone   String?\n  address String?\n\n  transactions Transaction[] @relation(\"CustomerTransactions\")\n}\n\nmodel item {\n  item_id   Int     @id @default(autoincrement())\n  category  String?\n  item_name String? @unique\n\n  stock Int?\n  price Decimal @default(0.00)\n\n  transactions Transaction[] @relation(\"ItemTransactions\")\n}\n\nmodel Transaction {\n  Bill_No   Int       @id @default(autoincrement())\n  Bill_Date DateTime?\n\n  Name      String?\n  Item_Name String?\n\n  Qty         Int?\n  item_price  Decimal @default(0.00)\n  Total_Price Decimal @default(0.00)\n\n  customer Customer? @relation(\"CustomerTransactions\", fields: [Name], references: [cust_name], map: \"Transaction_customer_fkey\")\n\n  item item? @relation(\"ItemTransactions\", fields: [Item_Name], references: [item_name], map: \"Transaction_item_fkey\")\n}\n",
-  "inlineSchemaHash": "35f9e41d5c54990630377751ef32e2c3793992fe5067632ddfda2f7520acf01e",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Shopkeeper {\n  shop_id   Int    @id @default(autoincrement())\n  shop_name String @unique\n  name      String\n  email     String @unique\n  password  String\n\n  // Relations\n  customers    Customer[]\n  items        Item[]\n  transactions Transaction[]\n}\n\nmodel Customer {\n  cust_id   Int     @id @default(autoincrement())\n  cust_name String\n  email     String?\n  phone     String?\n  address   String?\n\n  // Foreign key → Shopkeeper\n  shop_id    Int\n  shopkeeper Shopkeeper @relation(fields: [shop_id], references: [shop_id])\n\n  // Relations\n  transactions Transaction[]\n}\n\nmodel Item {\n  item_id   Int     @id @default(autoincrement())\n  item_name String\n  category  String?\n  stock     Int?\n  price     Decimal @db.Decimal(10, 2)\n\n  // Foreign key → Shopkeeper\n  shop_id    Int\n  shopkeeper Shopkeeper @relation(fields: [shop_id], references: [shop_id])\n\n  // Relations\n  transactions Transaction[]\n}\n\nmodel Transaction {\n  transaction_id Int      @id @default(autoincrement())\n  bill_no        String?\n  bill_date      DateTime @default(now())\n  qty            Int\n  item_price     Decimal  @db.Decimal(10, 2)\n  total_price    Decimal  @db.Decimal(10, 2)\n\n  // Foreign keys\n  shop_id    Int\n  shopkeeper Shopkeeper @relation(fields: [shop_id], references: [shop_id])\n\n  cust_id  Int?\n  customer Customer? @relation(fields: [cust_id], references: [cust_id])\n\n  item_id Int\n  item    Item @relation(fields: [item_id], references: [item_id])\n}\n",
+  "inlineSchemaHash": "12991b482cee937d2bf2411c9965c1dc9841a5a55a8eae655d1d43d024eb6021",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Customer\":{\"fields\":[{\"name\":\"cust_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"cust_name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"address\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"transactions\",\"kind\":\"object\",\"type\":\"Transaction\",\"relationName\":\"CustomerTransactions\"}],\"dbName\":null},\"item\":{\"fields\":[{\"name\":\"item_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"category\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"item_name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"stock\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"transactions\",\"kind\":\"object\",\"type\":\"Transaction\",\"relationName\":\"ItemTransactions\"}],\"dbName\":null},\"Transaction\":{\"fields\":[{\"name\":\"Bill_No\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"Bill_Date\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"Name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"Item_Name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"Qty\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"item_price\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"Total_Price\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"customer\",\"kind\":\"object\",\"type\":\"Customer\",\"relationName\":\"CustomerTransactions\"},{\"name\":\"item\",\"kind\":\"object\",\"type\":\"item\",\"relationName\":\"ItemTransactions\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Shopkeeper\":{\"fields\":[{\"name\":\"shop_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"shop_name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"customers\",\"kind\":\"object\",\"type\":\"Customer\",\"relationName\":\"CustomerToShopkeeper\"},{\"name\":\"items\",\"kind\":\"object\",\"type\":\"Item\",\"relationName\":\"ItemToShopkeeper\"},{\"name\":\"transactions\",\"kind\":\"object\",\"type\":\"Transaction\",\"relationName\":\"ShopkeeperToTransaction\"}],\"dbName\":null},\"Customer\":{\"fields\":[{\"name\":\"cust_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"cust_name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"address\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"shop_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"shopkeeper\",\"kind\":\"object\",\"type\":\"Shopkeeper\",\"relationName\":\"CustomerToShopkeeper\"},{\"name\":\"transactions\",\"kind\":\"object\",\"type\":\"Transaction\",\"relationName\":\"CustomerToTransaction\"}],\"dbName\":null},\"Item\":{\"fields\":[{\"name\":\"item_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"item_name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"category\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"stock\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"shop_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"shopkeeper\",\"kind\":\"object\",\"type\":\"Shopkeeper\",\"relationName\":\"ItemToShopkeeper\"},{\"name\":\"transactions\",\"kind\":\"object\",\"type\":\"Transaction\",\"relationName\":\"ItemToTransaction\"}],\"dbName\":null},\"Transaction\":{\"fields\":[{\"name\":\"transaction_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"bill_no\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"bill_date\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"qty\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"item_price\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"total_price\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"shop_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"shopkeeper\",\"kind\":\"object\",\"type\":\"Shopkeeper\",\"relationName\":\"ShopkeeperToTransaction\"},{\"name\":\"cust_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"customer\",\"kind\":\"object\",\"type\":\"Customer\",\"relationName\":\"CustomerToTransaction\"},{\"name\":\"item_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"item\",\"kind\":\"object\",\"type\":\"Item\",\"relationName\":\"ItemToTransaction\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

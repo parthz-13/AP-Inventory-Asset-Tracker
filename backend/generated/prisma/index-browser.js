@@ -120,35 +120,54 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.ShopkeeperScalarFieldEnum = {
+  shop_id: 'shop_id',
+  shop_name: 'shop_name',
+  name: 'name',
+  email: 'email',
+  password: 'password'
+};
+
 exports.Prisma.CustomerScalarFieldEnum = {
   cust_id: 'cust_id',
   cust_name: 'cust_name',
   email: 'email',
   phone: 'phone',
-  address: 'address'
+  address: 'address',
+  shop_id: 'shop_id'
 };
 
 exports.Prisma.ItemScalarFieldEnum = {
   item_id: 'item_id',
-  category: 'category',
   item_name: 'item_name',
+  category: 'category',
   stock: 'stock',
-  price: 'price'
+  price: 'price',
+  shop_id: 'shop_id'
 };
 
 exports.Prisma.TransactionScalarFieldEnum = {
-  Bill_No: 'Bill_No',
-  Bill_Date: 'Bill_Date',
-  Name: 'Name',
-  Item_Name: 'Item_Name',
-  Qty: 'Qty',
+  transaction_id: 'transaction_id',
+  bill_no: 'bill_no',
+  bill_date: 'bill_date',
+  qty: 'qty',
   item_price: 'item_price',
-  Total_Price: 'Total_Price'
+  total_price: 'total_price',
+  shop_id: 'shop_id',
+  cust_id: 'cust_id',
+  item_id: 'item_id'
 };
 
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.ShopkeeperOrderByRelevanceFieldEnum = {
+  shop_name: 'shop_name',
+  name: 'name',
+  email: 'email',
+  password: 'password'
 };
 
 exports.Prisma.NullsOrder = {
@@ -163,20 +182,20 @@ exports.Prisma.CustomerOrderByRelevanceFieldEnum = {
   address: 'address'
 };
 
-exports.Prisma.itemOrderByRelevanceFieldEnum = {
-  category: 'category',
-  item_name: 'item_name'
+exports.Prisma.ItemOrderByRelevanceFieldEnum = {
+  item_name: 'item_name',
+  category: 'category'
 };
 
 exports.Prisma.TransactionOrderByRelevanceFieldEnum = {
-  Name: 'Name',
-  Item_Name: 'Item_Name'
+  bill_no: 'bill_no'
 };
 
 
 exports.Prisma.ModelName = {
+  Shopkeeper: 'Shopkeeper',
   Customer: 'Customer',
-  item: 'item',
+  Item: 'Item',
   Transaction: 'Transaction'
 };
 
