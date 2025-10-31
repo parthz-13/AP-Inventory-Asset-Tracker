@@ -150,13 +150,13 @@ Provide a clear description of the changes and reference any related issues.*
 
 # 👥 Contributors
 
-- Parth
+- Parth Kumar Singh
 
-- Yashvendra Singh
+- Veer Shah
 
 - Karan Rawat
 
-- Ganesh
+- Ganesh Wayal
 ---
 
 # 🧠 Ideation Document
@@ -165,13 +165,13 @@ Provide a clear description of the changes and reference any related issues.*
 ### Project Title: Inventory & Asset Tracker
 ### Team Members:
 
-- Parth
+- Parth Kumar Singh
 
-- Yashvendra Singh
+- Veer Shah
 
 - Karan Rawat
 
-- Ganesh
+- Ganesh Wayal
 
 ## 2. Problem Statement
 
