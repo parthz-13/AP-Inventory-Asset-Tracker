@@ -26,6 +26,12 @@
 
 ---
 
+## ♙ Project Documentation
+
+- [Ideation Document](./ideation.md)
+
+---
+
 ## ♜ Project Setup (Local Development)
 
 ###  Clone the Repository  
