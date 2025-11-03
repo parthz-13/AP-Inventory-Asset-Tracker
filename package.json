@@ -1,17 +1,25 @@
 {
-  "type": "commonjs",
   "name": "inventory-asset-tracker",
   "version": "1.0.0",
+  "description": "♝ A full-stack web application for **shopkeepers and small businesses** to manage their inventory, suppliers, and sales efficiently. It offers **real-time stock tracking**, **billing**, **low-stock alerts**, and **insightful analytics** — all in one place.",
+  "keywords": [],
+  "homepage": "https://github.com/parthz-13/AP-Inventory-Asset-Tracker#readme",
+  "bugs": {
+    "url": "https://github.com/parthz-13/AP-Inventory-Asset-Tracker/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parthz-13/AP-Inventory-Asset-Tracker.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/src/server.js",
     "dev": "nodemon backend/src/server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "@prisma/client": "^6.16.2",
     "bcrypt": "^6.0.0",
@@ -20,5 +28,6 @@
     "jsonwebtoken": "^9.0.2",
     "nodemon": "^3.1.10",
     "prisma": "^6.16.2"
-  }
+  },
+  "devDependencies": {}
 }
