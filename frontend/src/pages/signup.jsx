@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './Login.css';
 
-const Login = () => {
+const Signup = ({ onSwitch }) => {
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (e) => {
@@ -13,7 +15,7 @@ const Login = () => {
         // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 2000));
 
-        console.log('Login attempt:', { email, password });
+        console.log('Signup attempt:', { name, email, password });
         setIsLoading(false);
     };
 
@@ -21,11 +23,24 @@ const Login = () => {
         <div className="login-container">
             <div className="login-card">
                 <div className="login-header">
-                    <h2>Welcome Back</h2>
-                    <p>Please sign in to your account</p>
+                    <h2>Create Account</h2>
+                    <p>Join us and start your journey</p>
                 </div>
 
                 <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            id="name"
+                            className="form-input"
+                            placeholder=" "
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                        />
+                        <label className="form-label" htmlFor="name">Full Name</label>
+                    </div>
+
                     <div className="form-group">
                         <input
                             type="email"
@@ -52,33 +67,38 @@ const Login = () => {
                         <label className="form-label" htmlFor="password">Password</label>
                     </div>
 
-                    <div className="form-options">
-                        <label className="remember-me">
-                            <input type="checkbox" />
-                            <span>Remember me</span>
-                        </label>
-                        <a href="#" className="forgot-password">Forgot password?</a>
+                    <div className="form-group">
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            className="form-input"
+                            placeholder=" "
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            required
+                        />
+                        <label className="form-label" htmlFor="confirmPassword">Confirm Password</label>
                     </div>
 
                     <button type="submit" className="login-button" disabled={isLoading}>
                         {isLoading ? (
                             <>
                                 <div className="spinner"></div>
-                                Signing In...
+                                Creating Account...
                             </>
                         ) : (
-                            'Sign In'
+                            'Sign Up'
                         )}
                     </button>
                 </form>
 
                 <div className="signup-link">
-                    Don't have an account?
-                    <a href="#" onClick={(e) => { e.preventDefault(); onSwitch(); }}>Sign up</a>
+                    Already have an account?
+                    <a href="#" onClick={(e) => { e.preventDefault(); onSwitch(); }}>Sign in</a>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Login;
+export default Signup;
