@@ -12,7 +12,6 @@ const Signup = ({ onSwitch }) => {
         e.preventDefault();
         setIsLoading(true);
 
-        // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 2000));
 
         console.log('Signup attempt:', { name, email, password });
