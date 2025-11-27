@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Shopkeeper {
+  shop_id   Int    @id @default(autoincrement())
+  shop_name String @unique
+  name      String
+  email     String @unique
+  password  String
+
+  // Relations
+  customers    Customer[]
+  items        Item[]
+  transactions Transaction[]
+}
+
+model Customer {
+  cust_id   Int     @id @default(autoincrement())
+  cust_name String
+  email     String?
+  phone     String?
+  address   String?
+
+  // Foreign key → Shopkeeper
+  shop_id    Int
+  shopkeeper Shopkeeper @relation(fields: [shop_id], references: [shop_id])
+
+  // Relations
+  transactions Transaction[]
+}
+
+model Item {
+  item_id   Int     @id @default(autoincrement())
+  item_name String
+  category  String?
+  stock     Int?
+  price     Decimal
+
+  // Foreign key → Shopkeeper
+  shop_id    Int
+  shopkeeper Shopkeeper @relation(fields: [shop_id], references: [shop_id])
+
+  // Relations
+  transactions Transaction[]
+}
+
+model Transaction {
+  transaction_id Int      @id @default(autoincrement())
+  bill_no        String?
+  bill_date      DateTime @default(now())
+  qty            Int
+  item_price     Decimal
+  total_price    Decimal
+
+  // Foreign keys
+  shop_id    Int
+  shopkeeper Shopkeeper @relation(fields: [shop_id], references: [shop_id])
+
+  cust_id  Int?
+  customer Customer? @relation(fields: [cust_id], references: [cust_id])
+
+  item_id Int
+  item    Item @relation(fields: [item_id], references: [item_id])
+}
