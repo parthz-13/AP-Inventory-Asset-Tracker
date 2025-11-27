@@ -12,8 +12,8 @@ export const createItem = async (req, res) => {
       data: {
         item_name,
         category,
-        stock: stock ?? 0,
-        price,
+        stock: stock !== undefined ? Number(stock) : 0,
+        price: Number(price),
         shop_id,
       },
     });
@@ -87,7 +87,12 @@ export const updateItem = async (req, res) => {
 
     const updated = await prisma.item.update({
       where: { item_id },
-      data: { item_name, category, stock, price },
+      data: {
+        item_name,
+        category,
+        stock: stock !== undefined ? Number(stock) : undefined,
+        price: price !== undefined ? Number(price) : undefined
+      },
     });
 
     res.status(200).json({

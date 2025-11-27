@@ -7,11 +7,10 @@ import Signup from './pages/signup';
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
 
-// Placeholder pages for dashboard routes
-const Dashboard = () => <div>Dashboard Content</div>;
-const Inventory = () => <div>Inventory Content</div>;
-const Billing = () => <div>Billing Content</div>;
-const Customers = () => <div>Customers Content</div>;
+import Dashboard from './pages/Dashboard';
+import Inventory from './pages/Inventory';
+import Billing from './pages/Billing';
+import Customers from './pages/Customers';
 
 function App() {
   return (
