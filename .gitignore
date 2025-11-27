@@ -8,3 +8,5 @@ frontend/.env
 
 frontend/dist/
 backend/prisma/dev.db
+
+.vscode/
