@@ -86,9 +86,6 @@ Prisma.NullTypes = {
  * Enums
  */
 exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
-  ReadUncommitted: 'ReadUncommitted',
-  ReadCommitted: 'ReadCommitted',
-  RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
 });
 
@@ -135,32 +132,9 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.ShopkeeperOrderByRelevanceFieldEnum = {
-  shop_name: 'shop_name',
-  name: 'name',
-  email: 'email',
-  password: 'password'
-};
-
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
-};
-
-exports.Prisma.CustomerOrderByRelevanceFieldEnum = {
-  cust_name: 'cust_name',
-  email: 'email',
-  phone: 'phone',
-  address: 'address'
-};
-
-exports.Prisma.ItemOrderByRelevanceFieldEnum = {
-  item_name: 'item_name',
-  category: 'category'
-};
-
-exports.Prisma.TransactionOrderByRelevanceFieldEnum = {
-  bill_no: 'bill_no'
 };
 
 
@@ -181,7 +155,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/parthsingh/Desktop/Inventory-Asset-Tracker/backend/generated/prisma",
+      "value": "/Users/ganeshwayal/AP-Inventory-Asset-Tracker/backend/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -195,7 +169,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/parthsingh/Desktop/Inventory-Asset-Tracker/backend/prisma/schema.prisma",
+    "sourceFilePath": "/Users/ganeshwayal/AP-Inventory-Asset-Tracker/backend/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -207,7 +181,7 @@ const config = {
   "datasourceNames": [
     "db"
   ],
-  "activeProvider": "mysql",
+  "activeProvider": "sqlite",
   "inlineDatasources": {
     "db": {
       "url": {
@@ -216,8 +190,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Shopkeeper {\n  shop_id   Int    @id @default(autoincrement())\n  shop_name String @unique\n  name      String\n  email     String @unique\n  password  String\n\n  // Relations\n  customers    Customer[]\n  items        Item[]\n  transactions Transaction[]\n}\n\nmodel Customer {\n  cust_id   Int     @id @default(autoincrement())\n  cust_name String\n  email     String?\n  phone     String?\n  address   String?\n\n  // Foreign key → Shopkeeper\n  shop_id    Int\n  shopkeeper Shopkeeper @relation(fields: [shop_id], references: [shop_id])\n\n  // Relations\n  transactions Transaction[]\n}\n\nmodel Item {\n  item_id   Int     @id @default(autoincrement())\n  item_name String\n  category  String?\n  stock     Int?\n  price     Decimal @db.Decimal(10, 2)\n\n  // Foreign key → Shopkeeper\n  shop_id    Int\n  shopkeeper Shopkeeper @relation(fields: [shop_id], references: [shop_id])\n\n  // Relations\n  transactions Transaction[]\n}\n\nmodel Transaction {\n  transaction_id Int      @id @default(autoincrement())\n  bill_no        String?\n  bill_date      DateTime @default(now())\n  qty            Int\n  item_price     Decimal  @db.Decimal(10, 2)\n  total_price    Decimal  @db.Decimal(10, 2)\n\n  // Foreign keys\n  shop_id    Int\n  shopkeeper Shopkeeper @relation(fields: [shop_id], references: [shop_id])\n\n  cust_id  Int?\n  customer Customer? @relation(fields: [cust_id], references: [cust_id])\n\n  item_id Int\n  item    Item @relation(fields: [item_id], references: [item_id])\n}\n",
-  "inlineSchemaHash": "12991b482cee937d2bf2411c9965c1dc9841a5a55a8eae655d1d43d024eb6021",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Shopkeeper {\n  shop_id   Int    @id @default(autoincrement())\n  shop_name String @unique\n  name      String\n  email     String @unique\n  password  String\n\n  // Relations\n  customers    Customer[]\n  items        Item[]\n  transactions Transaction[]\n}\n\nmodel Customer {\n  cust_id   Int     @id @default(autoincrement())\n  cust_name String\n  email     String?\n  phone     String?\n  address   String?\n\n  // Foreign key → Shopkeeper\n  shop_id    Int\n  shopkeeper Shopkeeper @relation(fields: [shop_id], references: [shop_id])\n\n  // Relations\n  transactions Transaction[]\n}\n\nmodel Item {\n  item_id   Int     @id @default(autoincrement())\n  item_name String\n  category  String?\n  stock     Int?\n  price     Decimal\n\n  // Foreign key → Shopkeeper\n  shop_id    Int\n  shopkeeper Shopkeeper @relation(fields: [shop_id], references: [shop_id])\n\n  // Relations\n  transactions Transaction[]\n}\n\nmodel Transaction {\n  transaction_id Int      @id @default(autoincrement())\n  bill_no        String?\n  bill_date      DateTime @default(now())\n  qty            Int\n  item_price     Decimal\n  total_price    Decimal\n\n  // Foreign keys\n  shop_id    Int\n  shopkeeper Shopkeeper @relation(fields: [shop_id], references: [shop_id])\n\n  cust_id  Int?\n  customer Customer? @relation(fields: [cust_id], references: [cust_id])\n\n  item_id Int\n  item    Item @relation(fields: [item_id], references: [item_id])\n}\n",
+  "inlineSchemaHash": "578475bccc73da5acebd20c54e66da787bff633b1d5516464e6e51fc76d52a93",
   "copyEngine": true
 }
 config.dirname = '/'
