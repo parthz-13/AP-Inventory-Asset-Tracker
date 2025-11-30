@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "inventory-asset-tracker",
   "version": "1.0.0",
   "description": "♝ A full-stack web application for **shopkeepers and small businesses** to manage their inventory, suppliers, and sales efficiently. It offers **real-time stock tracking**, **billing**, **low-stock alerts**, and **insightful analytics** — all in one place.",
@@ -13,12 +14,11 @@
   },
   "license": "ISC",
   "author": "",
-  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node backend/src/server.js",
-    "dev": "nodemon backend/src/server.js"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
   },
   "dependencies": {
     "@prisma/client": "^6.16.2",
