@@ -10,7 +10,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 model Shopkeeper {
@@ -47,7 +47,7 @@ model Item {
   item_name   String
   category    String?
   stock       Int?
-  price       Decimal        @db.Decimal(10,2)
+  price       Decimal
 
   // Foreign key → Shopkeeper
   shop_id     Int
@@ -62,8 +62,8 @@ model Transaction {
   bill_no        String?
   bill_date      DateTime     @default(now())
   qty            Int
-  item_price     Decimal      @db.Decimal(10,2)
-  total_price    Decimal      @db.Decimal(10,2)
+  item_price     Decimal
+  total_price    Decimal
 
   // Foreign keys
   shop_id        Int
