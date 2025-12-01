@@ -129,7 +129,7 @@ const Inventory = () => {
                                                 {item.stock}
                                             </span>
                                         </td>
-                                        <td className="py-3 text-gray-900">${Number(item.price).toFixed(2)}</td>
+                                        <td className="py-3 text-gray-900">₹{Number(item.price).toFixed(2)}</td>
                                         <td className="py-3 text-right">
                                             <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                                                 <button

@@ -125,7 +125,7 @@ const Billing = () => {
                             >
                                 <div className="flex justify-between items-start mb-2">
                                     <h3 className="font-bold text-gray-900 line-clamp-1">{item.item_name}</h3>
-                                    <span className="text-primary font-bold">${Number(item.price).toFixed(2)}</span>
+                                    <span className="text-primary font-bold">₹{Number(item.price).toFixed(2)}</span>
                                 </div>
                                 <div className="flex justify-between items-center text-sm text-gray-500">
                                     <span>Stock: {item.stock}</span>
@@ -173,7 +173,7 @@ const Billing = () => {
                                 <div key={item.item_id} className="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
                                     <div className="flex-1">
                                         <h4 className="font-medium text-gray-900 line-clamp-1">{item.item_name}</h4>
-                                        <p className="text-sm text-gray-500">${Number(item.price).toFixed(2)} x {item.qty}</p>
+                                        <p className="text-sm text-gray-500">₹{Number(item.price).toFixed(2)} x {item.qty}</p>
                                     </div>
                                     <div className="flex items-center gap-3">
                                         <div className="flex items-center gap-1 bg-white rounded-lg border border-gray-200">
@@ -206,7 +206,7 @@ const Billing = () => {
                     <div className="border-t border-gray-100 pt-4 space-y-4">
                         <div className="flex justify-between items-center text-lg font-bold">
                             <span>Total</span>
-                            <span>${calculateTotal().toFixed(2)}</span>
+                            <span>₹{calculateTotal().toFixed(2)}</span>
                         </div>
                         <Button
                             className="w-full py-3"
