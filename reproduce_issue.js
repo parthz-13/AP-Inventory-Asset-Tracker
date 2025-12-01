@@ -1,23 +1,26 @@
 import 'dotenv/config';
 import { PrismaClient } from './backend/generated/prisma/index.js';
+import bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
 async function main() {
     try {
-        console.log('Attempting to create item with string values...');
-        const item = await prisma.item.create({
+        console.log('Attempting to create shopkeeper...');
+        const password = 'password123';
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const shopkeeper = await prisma.shopkeeper.create({
             data: {
-                item_name: 'Test Item String',
-                category: 'Test',
-                stock: "2", // Passing string
-                price: "11.02", // Passing string
-                shop_id: 1, // Assuming shop_id 1 exists
+                shop_name: 'Test Shop Repro ' + Date.now(),
+                name: 'Test User Repro',
+                email: 'testrepro' + Date.now() + '@example.com',
+                password: hashedPassword,
             },
         });
-        console.log('Item created successfully:', item);
+        console.log('Shopkeeper created successfully:', shopkeeper);
     } catch (error) {
-        console.error('Error creating item:', error);
+        console.error('Error creating shopkeeper:', error);
     } finally {
         await prisma.$disconnect();
     }

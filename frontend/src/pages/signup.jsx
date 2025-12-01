@@ -43,7 +43,7 @@ const Signup = () => {
             });
             navigate('/login');
         } catch (err) {
-            setError(err.response?.data?.message || 'Failed to create account');
+            setError(err.response?.data?.message || err.response?.data?.error || 'Failed to create account');
         } finally {
             setLoading(false);
         }

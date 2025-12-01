@@ -3,9 +3,9 @@ import { cn } from '../utils/cn';
 
 const Button = ({ children, className, variant = 'primary', ...props }) => {
     const variants = {
-        primary: 'bg-primary text-white hover:bg-blue-700',
+        primary: 'bg-primary text-white hover:bg-violet-700',
         secondary: 'bg-secondary text-white hover:bg-slate-700',
-        outline: 'border-2 border-primary text-primary hover:bg-blue-50',
+        outline: 'border-2 border-primary text-primary hover:bg-violet-50',
         ghost: 'text-gray-600 hover:bg-gray-100',
     };
 
