@@ -156,7 +156,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/veershah/Desktop/Ideas/AP project/AP-Inventory-Asset-Tracker/backend/generated/prisma",
+      "value": "/Users/ganeshwayal/AP-Inventory-Asset-Tracker/backend/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -170,12 +170,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/veershah/Desktop/Ideas/AP project/AP-Inventory-Asset-Tracker/backend/prisma/schema.prisma",
+    "sourceFilePath": "/Users/ganeshwayal/AP-Inventory-Asset-Tracker/backend/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../prisma",
   "clientVersion": "6.19.0",
@@ -184,7 +183,7 @@ const config = {
     "db"
   ],
   "activeProvider": "sqlite",
-  "postinstall": false,
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
