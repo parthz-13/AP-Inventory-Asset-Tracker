@@ -76,7 +76,7 @@ const Dashboard = () => {
                 />
                 <StatCard
                     title="Total Sales"
-                    value={`$${stats.totalSales.toFixed(2)}`}
+                    value={`₹${stats.totalSales.toFixed(2)}`}
                     icon={<TrendingUp className="w-6 h-6 text-purple-600" />}
                     bg="bg-purple-50"
                 />
@@ -98,7 +98,7 @@ const Dashboard = () => {
                                             <p className="font-medium">Transaction #{t.transaction_id}</p>
                                         </div>
                                     </div>
-                                    <span className="font-bold text-gray-900">${Number(t.total_price).toFixed(2)}</span>
+                                    <span className="font-bold text-gray-900">₹{Number(t.total_price).toFixed(2)}</span>
                                 </div>
                             ))}
                         </div>

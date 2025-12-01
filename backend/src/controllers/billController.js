@@ -4,22 +4,20 @@ import { v4 as uuidv4 } from 'uuid';
 export const createBill = async (req, res) => {
     try {
         const shop_id = req.user.shop_id;
-        const { cust_id, items } = req.body; // items: [{ item_id, qty, price }]
+        const { cust_id, items } = req.body; 
 
         if (!items || items.length === 0) {
             return res.status(400).json({ message: "No items in bill" });
         }
 
-        const bill_no = uuidv4().split('-')[0].toUpperCase(); // Simple bill number
+        const bill_no = uuidv4().split('-')[0].toUpperCase(); 
         const transactions = [];
 
-        // Use a transaction to ensure all records are created and stock is updated
         await prisma.$transaction(async (tx) => {
             for (const item of items) {
                 const { item_id, qty, price } = item;
                 const total_price = Number(price) * Number(qty);
 
-                // Create transaction record
                 const transaction = await tx.transaction.create({
                     data: {
                         bill_no,
