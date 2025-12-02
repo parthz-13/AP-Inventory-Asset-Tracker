@@ -10,6 +10,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Dashboard from './pages/Dashboard';
 import Inventory from './pages/Inventory';
 import Billing from './pages/Billing';
+import Reports from './pages/Reports';
+
 import Customers from './pages/Customers';
 
 function App() {
@@ -28,6 +30,7 @@ function App() {
             <Route path="inventory" element={<Inventory />} />
             <Route path="billing" element={<Billing />} />
             <Route path="customers" element={<Customers />} />
+            <Route path="reports" element={<Reports />} />
           </Route>
         </Routes>
       </Router>

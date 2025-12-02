@@ -48,6 +48,7 @@ model Item {
   category    String?
   stock       Int?
   price       Decimal
+  cost_price  Decimal       @default(0)
 
   // Foreign key → Shopkeeper
   shop_id     Int

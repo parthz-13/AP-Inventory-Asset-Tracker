@@ -3555,6 +3555,7 @@ export namespace Prisma {
     item_id: number | null
     stock: number | null
     price: Decimal | null
+    cost_price: Decimal | null
     shop_id: number | null
   }
 
@@ -3562,6 +3563,7 @@ export namespace Prisma {
     item_id: number | null
     stock: number | null
     price: Decimal | null
+    cost_price: Decimal | null
     shop_id: number | null
   }
 
@@ -3571,6 +3573,7 @@ export namespace Prisma {
     category: string | null
     stock: number | null
     price: Decimal | null
+    cost_price: Decimal | null
     shop_id: number | null
   }
 
@@ -3580,6 +3583,7 @@ export namespace Prisma {
     category: string | null
     stock: number | null
     price: Decimal | null
+    cost_price: Decimal | null
     shop_id: number | null
   }
 
@@ -3589,6 +3593,7 @@ export namespace Prisma {
     category: number
     stock: number
     price: number
+    cost_price: number
     shop_id: number
     _all: number
   }
@@ -3598,6 +3603,7 @@ export namespace Prisma {
     item_id?: true
     stock?: true
     price?: true
+    cost_price?: true
     shop_id?: true
   }
 
@@ -3605,6 +3611,7 @@ export namespace Prisma {
     item_id?: true
     stock?: true
     price?: true
+    cost_price?: true
     shop_id?: true
   }
 
@@ -3614,6 +3621,7 @@ export namespace Prisma {
     category?: true
     stock?: true
     price?: true
+    cost_price?: true
     shop_id?: true
   }
 
@@ -3623,6 +3631,7 @@ export namespace Prisma {
     category?: true
     stock?: true
     price?: true
+    cost_price?: true
     shop_id?: true
   }
 
@@ -3632,6 +3641,7 @@ export namespace Prisma {
     category?: true
     stock?: true
     price?: true
+    cost_price?: true
     shop_id?: true
     _all?: true
   }
@@ -3728,6 +3738,7 @@ export namespace Prisma {
     category: string | null
     stock: number | null
     price: Decimal
+    cost_price: Decimal
     shop_id: number
     _count: ItemCountAggregateOutputType | null
     _avg: ItemAvgAggregateOutputType | null
@@ -3756,6 +3767,7 @@ export namespace Prisma {
     category?: boolean
     stock?: boolean
     price?: boolean
+    cost_price?: boolean
     shop_id?: boolean
     shopkeeper?: boolean | ShopkeeperDefaultArgs<ExtArgs>
     transactions?: boolean | Item$transactionsArgs<ExtArgs>
@@ -3768,6 +3780,7 @@ export namespace Prisma {
     category?: boolean
     stock?: boolean
     price?: boolean
+    cost_price?: boolean
     shop_id?: boolean
     shopkeeper?: boolean | ShopkeeperDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["item"]>
@@ -3778,6 +3791,7 @@ export namespace Prisma {
     category?: boolean
     stock?: boolean
     price?: boolean
+    cost_price?: boolean
     shop_id?: boolean
     shopkeeper?: boolean | ShopkeeperDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["item"]>
@@ -3788,10 +3802,11 @@ export namespace Prisma {
     category?: boolean
     stock?: boolean
     price?: boolean
+    cost_price?: boolean
     shop_id?: boolean
   }
 
-  export type ItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"item_id" | "item_name" | "category" | "stock" | "price" | "shop_id", ExtArgs["result"]["item"]>
+  export type ItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"item_id" | "item_name" | "category" | "stock" | "price" | "cost_price" | "shop_id", ExtArgs["result"]["item"]>
   export type ItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     shopkeeper?: boolean | ShopkeeperDefaultArgs<ExtArgs>
     transactions?: boolean | Item$transactionsArgs<ExtArgs>
@@ -3816,6 +3831,7 @@ export namespace Prisma {
       category: string | null
       stock: number | null
       price: Prisma.Decimal
+      cost_price: Prisma.Decimal
       shop_id: number
     }, ExtArgs["result"]["item"]>
     composites: {}
@@ -4247,6 +4263,7 @@ export namespace Prisma {
     readonly category: FieldRef<"Item", 'String'>
     readonly stock: FieldRef<"Item", 'Int'>
     readonly price: FieldRef<"Item", 'Decimal'>
+    readonly cost_price: FieldRef<"Item", 'Decimal'>
     readonly shop_id: FieldRef<"Item", 'Int'>
   }
     
@@ -5925,6 +5942,7 @@ export namespace Prisma {
     category: 'category',
     stock: 'stock',
     price: 'price',
+    cost_price: 'cost_price',
     shop_id: 'shop_id'
   };
 
@@ -6142,6 +6160,7 @@ export namespace Prisma {
     category?: StringNullableFilter<"Item"> | string | null
     stock?: IntNullableFilter<"Item"> | number | null
     price?: DecimalFilter<"Item"> | Decimal | DecimalJsLike | number | string
+    cost_price?: DecimalFilter<"Item"> | Decimal | DecimalJsLike | number | string
     shop_id?: IntFilter<"Item"> | number
     shopkeeper?: XOR<ShopkeeperScalarRelationFilter, ShopkeeperWhereInput>
     transactions?: TransactionListRelationFilter
@@ -6153,6 +6172,7 @@ export namespace Prisma {
     category?: SortOrderInput | SortOrder
     stock?: SortOrderInput | SortOrder
     price?: SortOrder
+    cost_price?: SortOrder
     shop_id?: SortOrder
     shopkeeper?: ShopkeeperOrderByWithRelationInput
     transactions?: TransactionOrderByRelationAggregateInput
@@ -6167,6 +6187,7 @@ export namespace Prisma {
     category?: StringNullableFilter<"Item"> | string | null
     stock?: IntNullableFilter<"Item"> | number | null
     price?: DecimalFilter<"Item"> | Decimal | DecimalJsLike | number | string
+    cost_price?: DecimalFilter<"Item"> | Decimal | DecimalJsLike | number | string
     shop_id?: IntFilter<"Item"> | number
     shopkeeper?: XOR<ShopkeeperScalarRelationFilter, ShopkeeperWhereInput>
     transactions?: TransactionListRelationFilter
@@ -6178,6 +6199,7 @@ export namespace Prisma {
     category?: SortOrderInput | SortOrder
     stock?: SortOrderInput | SortOrder
     price?: SortOrder
+    cost_price?: SortOrder
     shop_id?: SortOrder
     _count?: ItemCountOrderByAggregateInput
     _avg?: ItemAvgOrderByAggregateInput
@@ -6195,6 +6217,7 @@ export namespace Prisma {
     category?: StringNullableWithAggregatesFilter<"Item"> | string | null
     stock?: IntNullableWithAggregatesFilter<"Item"> | number | null
     price?: DecimalWithAggregatesFilter<"Item"> | Decimal | DecimalJsLike | number | string
+    cost_price?: DecimalWithAggregatesFilter<"Item"> | Decimal | DecimalJsLike | number | string
     shop_id?: IntWithAggregatesFilter<"Item"> | number
   }
 
@@ -6414,6 +6437,7 @@ export namespace Prisma {
     category?: string | null
     stock?: number | null
     price: Decimal | DecimalJsLike | number | string
+    cost_price?: Decimal | DecimalJsLike | number | string
     shopkeeper: ShopkeeperCreateNestedOneWithoutItemsInput
     transactions?: TransactionCreateNestedManyWithoutItemInput
   }
@@ -6424,6 +6448,7 @@ export namespace Prisma {
     category?: string | null
     stock?: number | null
     price: Decimal | DecimalJsLike | number | string
+    cost_price?: Decimal | DecimalJsLike | number | string
     shop_id: number
     transactions?: TransactionUncheckedCreateNestedManyWithoutItemInput
   }
@@ -6433,6 +6458,7 @@ export namespace Prisma {
     category?: NullableStringFieldUpdateOperationsInput | string | null
     stock?: NullableIntFieldUpdateOperationsInput | number | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    cost_price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     shopkeeper?: ShopkeeperUpdateOneRequiredWithoutItemsNestedInput
     transactions?: TransactionUpdateManyWithoutItemNestedInput
   }
@@ -6443,6 +6469,7 @@ export namespace Prisma {
     category?: NullableStringFieldUpdateOperationsInput | string | null
     stock?: NullableIntFieldUpdateOperationsInput | number | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    cost_price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     shop_id?: IntFieldUpdateOperationsInput | number
     transactions?: TransactionUncheckedUpdateManyWithoutItemNestedInput
   }
@@ -6453,6 +6480,7 @@ export namespace Prisma {
     category?: string | null
     stock?: number | null
     price: Decimal | DecimalJsLike | number | string
+    cost_price?: Decimal | DecimalJsLike | number | string
     shop_id: number
   }
 
@@ -6461,6 +6489,7 @@ export namespace Prisma {
     category?: NullableStringFieldUpdateOperationsInput | string | null
     stock?: NullableIntFieldUpdateOperationsInput | number | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    cost_price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
   }
 
   export type ItemUncheckedUpdateManyInput = {
@@ -6469,6 +6498,7 @@ export namespace Prisma {
     category?: NullableStringFieldUpdateOperationsInput | string | null
     stock?: NullableIntFieldUpdateOperationsInput | number | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    cost_price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     shop_id?: IntFieldUpdateOperationsInput | number
   }
 
@@ -6776,6 +6806,7 @@ export namespace Prisma {
     category?: SortOrder
     stock?: SortOrder
     price?: SortOrder
+    cost_price?: SortOrder
     shop_id?: SortOrder
   }
 
@@ -6783,6 +6814,7 @@ export namespace Prisma {
     item_id?: SortOrder
     stock?: SortOrder
     price?: SortOrder
+    cost_price?: SortOrder
     shop_id?: SortOrder
   }
 
@@ -6792,6 +6824,7 @@ export namespace Prisma {
     category?: SortOrder
     stock?: SortOrder
     price?: SortOrder
+    cost_price?: SortOrder
     shop_id?: SortOrder
   }
 
@@ -6801,6 +6834,7 @@ export namespace Prisma {
     category?: SortOrder
     stock?: SortOrder
     price?: SortOrder
+    cost_price?: SortOrder
     shop_id?: SortOrder
   }
 
@@ -6808,6 +6842,7 @@ export namespace Prisma {
     item_id?: SortOrder
     stock?: SortOrder
     price?: SortOrder
+    cost_price?: SortOrder
     shop_id?: SortOrder
   }
 
@@ -7473,6 +7508,7 @@ export namespace Prisma {
     category?: string | null
     stock?: number | null
     price: Decimal | DecimalJsLike | number | string
+    cost_price?: Decimal | DecimalJsLike | number | string
     transactions?: TransactionCreateNestedManyWithoutItemInput
   }
 
@@ -7482,6 +7518,7 @@ export namespace Prisma {
     category?: string | null
     stock?: number | null
     price: Decimal | DecimalJsLike | number | string
+    cost_price?: Decimal | DecimalJsLike | number | string
     transactions?: TransactionUncheckedCreateNestedManyWithoutItemInput
   }
 
@@ -7577,6 +7614,7 @@ export namespace Prisma {
     category?: StringNullableFilter<"Item"> | string | null
     stock?: IntNullableFilter<"Item"> | number | null
     price?: DecimalFilter<"Item"> | Decimal | DecimalJsLike | number | string
+    cost_price?: DecimalFilter<"Item"> | Decimal | DecimalJsLike | number | string
     shop_id?: IntFilter<"Item"> | number
   }
 
@@ -7862,6 +7900,7 @@ export namespace Prisma {
     category?: string | null
     stock?: number | null
     price: Decimal | DecimalJsLike | number | string
+    cost_price?: Decimal | DecimalJsLike | number | string
     shopkeeper: ShopkeeperCreateNestedOneWithoutItemsInput
   }
 
@@ -7871,6 +7910,7 @@ export namespace Prisma {
     category?: string | null
     stock?: number | null
     price: Decimal | DecimalJsLike | number | string
+    cost_price?: Decimal | DecimalJsLike | number | string
     shop_id: number
   }
 
@@ -7953,6 +7993,7 @@ export namespace Prisma {
     category?: NullableStringFieldUpdateOperationsInput | string | null
     stock?: NullableIntFieldUpdateOperationsInput | number | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    cost_price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     shopkeeper?: ShopkeeperUpdateOneRequiredWithoutItemsNestedInput
   }
 
@@ -7962,6 +8003,7 @@ export namespace Prisma {
     category?: NullableStringFieldUpdateOperationsInput | string | null
     stock?: NullableIntFieldUpdateOperationsInput | number | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    cost_price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     shop_id?: IntFieldUpdateOperationsInput | number
   }
 
@@ -7979,6 +8021,7 @@ export namespace Prisma {
     category?: string | null
     stock?: number | null
     price: Decimal | DecimalJsLike | number | string
+    cost_price?: Decimal | DecimalJsLike | number | string
   }
 
   export type TransactionCreateManyShopkeeperInput = {
@@ -8022,6 +8065,7 @@ export namespace Prisma {
     category?: NullableStringFieldUpdateOperationsInput | string | null
     stock?: NullableIntFieldUpdateOperationsInput | number | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    cost_price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     transactions?: TransactionUpdateManyWithoutItemNestedInput
   }
 
@@ -8031,6 +8075,7 @@ export namespace Prisma {
     category?: NullableStringFieldUpdateOperationsInput | string | null
     stock?: NullableIntFieldUpdateOperationsInput | number | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    cost_price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     transactions?: TransactionUncheckedUpdateManyWithoutItemNestedInput
   }
 
@@ -8040,6 +8085,7 @@ export namespace Prisma {
     category?: NullableStringFieldUpdateOperationsInput | string | null
     stock?: NullableIntFieldUpdateOperationsInput | number | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    cost_price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
   }
 
   export type TransactionUpdateWithoutShopkeeperInput = {
