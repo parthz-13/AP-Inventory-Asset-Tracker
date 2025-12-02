@@ -113,7 +113,7 @@ const Dashboard = () => {
                         <QuickAction title="Add New Item" link="/inventory" color="bg-blue-50 text-blue-700 hover:bg-blue-100" />
                         <QuickAction title="Create Bill" link="/billing" color="bg-green-50 text-green-700 hover:bg-green-100" />
                         <QuickAction title="Add Customer" link="/customers" color="bg-purple-50 text-purple-700 hover:bg-purple-100" />
-                        <QuickAction title="View Reports" link="/dashboard" color="bg-orange-50 text-orange-700 hover:bg-orange-100" />
+                        <QuickAction title="View Reports" link="/reports" color="bg-orange-50 text-orange-700 hover:bg-orange-100" />
                     </div>
                 </Card>
             </div>

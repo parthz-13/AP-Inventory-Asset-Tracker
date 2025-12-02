@@ -12,7 +12,7 @@ const Input = React.forwardRef(({ label, error, className, ...props }, ref) => {
             <input
                 ref={ref}
                 className={cn(
-                    'w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200',
+                    'w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 text-gray-900 bg-white',
                     error && 'border-red-500 focus:ring-red-200 focus:border-red-500',
                     className
                 )}
